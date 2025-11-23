@@ -1,0 +1,32 @@
+{
+  "allconv": {
+    "clean_acc": 0.8753,
+    "results": {
+      "nontargeted": {
+        "csv": "results/cifar10_1pixel/allconv_cifar10_nontargeted_pixels1.csv",
+        "success": 500,
+        "total": 500
+      }
+    }
+  },
+  "nin": {
+    "clean_acc": 0.1,
+    "results": {
+      "nontargeted": {
+        "csv": "results/cifar10_1pixel/nin_cifar10_nontargeted_pixels1.csv",
+        "success": 500,
+        "total": 500
+      }
+    }
+  },
+  "vgg16": {
+    "clean_acc": 0.9262,
+    "results": {
+      "nontargeted": {
+        "csv": "results/cifar10_1pixel/vgg16_cifar10_nontargeted_pixels1.csv",
+        "success": 500,
+        "total": 500
+      }
+    }
+  }
+}

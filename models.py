@@ -18,7 +18,7 @@ class AllConv(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(192, 192, 3, stride=1, padding=1),  # 8
             nn.ReLU(inplace=True),
-            nn.Dropout(0.5),  # 10: dropout after first two blocks
+            nn.Dropout(0.3),  # 10: dropout 0.3 as per paper
             nn.Conv2d(192, 192, 3, stride=2, padding=1),  # 11: stride 2 for downsampling
             nn.ReLU(inplace=True),
             nn.Conv2d(192, 192, 3, stride=1, padding=1),  # 13
@@ -27,7 +27,7 @@ class AllConv(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(192, num_classes, 1),  # 17
             nn.ReLU(inplace=True),
-            nn.AvgPool2d(8),  # global average pooling
+            nn.AvgPool2d(6, stride=1),  # average pooling kernel=6, stride=1 as per paper
             nn.Flatten(),
         )
 
@@ -97,10 +97,10 @@ class VGG16CIFAR(nn.Module):
         # For CIFAR-10 (32x32 input), after 5 maxpools: 32/(2^5) = 1x1
         self.classifier = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(512, 512),
+            nn.Linear(512, 2048),
             nn.ReLU(inplace=True),
             nn.Dropout(0.5),
-            nn.Linear(512, num_classes),
+            nn.Linear(2048, num_classes),
         )
 
     def forward(self, x):
